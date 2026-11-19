@@ -1,0 +1,11 @@
+stages:
+  data:
+    cmd: python -m pipelines.generate_data
+    outs:
+      - data/raw/customers.csv
+  train:
+    cmd: python -m pipelines.train
+    deps:
+      - data/raw/customers.csv
+    outs:
+      - models/approved_model.joblib
